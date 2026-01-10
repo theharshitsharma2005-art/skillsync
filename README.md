@@ -14,6 +14,12 @@ It matches students based on **skills, interests, and availability**, presented 
 
 ---
 
+## 🤔 Why SkillSync?
+
+Most collaboration tools focus on messaging.
+SkillSync focuses on **forming the right teams before collaboration begins**.
+
+
 ## ✨ Key Features
 
 - 🎮 **Game-Inspired Interface** – Interactive, dashboard-style UI
