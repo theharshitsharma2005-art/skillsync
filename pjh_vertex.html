@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SkillSync — Student Collaboration Platform</title>
+  <link rel="stylesheet" href="style.css" />
+  <meta name="theme-color" content="#2563EB" />
+</head>
+<body>
+  <!-- Ambient background -->
+  <div class="ambient" aria-hidden="true">
+    <div class="orb orb-blue"></div>
+    <div class="orb orb-purple"></div>
+    <div class="grid"></div>
+  </div>
+
+  <!-- Top HUD / Navbar -->
+  <header class="topbar">
+    <div class="container topbar__inner">
+      <a class="logo" href="#/home" aria-label="SkillSync Home">
+        <span class="logo__mark">⚡</span>
+        <span class="logo__text">SkillSync</span>
+      </a>
+
+      <nav class="nav">
+        <a class="nav__link" href="#/home" data-route="home">Home</a>
+        <a class="nav__link" href="#/players" data-route="players">Players</a>
+        <a class="nav__link" href="#/teams" data-route="teams">Teams</a>
+        <a class="nav__link nav__link--cta" href="#/signin" data-route="signin">Sign In</a>
+      </nav>
+
+      <div class="hud">
+        <div class="hud__user" id="hudUser">
+          <div class="initials" id="hudInitials">?</div>
+          <div class="hud__meta">
+            <div class="hud__name" id="hudName">Guest</div>
+            <div class="hud__sub" id="hudSub">Not signed in</div>
+          </div>
+        </div>
+        <button class="btn btn--ghost" id="btnSignOut" type="button" hidden>Sign out</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main app -->
+  <main class="app container" id="app" tabindex="-1">
+
+    <!-- HOME PAGE -->
+    <section class="page" id="page-home" data-page="home">
+      <section class="hero">
+        <div class="hero__left">
+          <div class="chip chip--glow">
+            <span class="dot dot--green"></span>
+            MVP • Game Dashboard UI
+          </div>
+
+          <h1 class="hero__title">Build Better Projects. <span class="grad">With the Right People.</span></h1>
+          <p class="hero__desc">
+            SkillSync helps college students find compatible teammates for hackathons, projects,
+            startups, and learning — matched by <b>skills</b>, <b>interests</b>, and <b>availability</b>.
+          </p>
+
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="#why">Start Your Journey</a>
+            <a class="btn btn--secondary" href="#/players">Explore Players</a>
+          </div>
+
+          <div class="hero__meta">
+            <div class="metaCard">
+              <div class="metaCard__label">Tech</div>
+              <div class="metaCard__value">Google Auth + Firebase</div>
+            </div>
+            <div class="metaCard">
+              <div class="metaCard__label">Future</div>
+              <div class="metaCard__value">Gemini AI matching</div>
+            </div>
+            <div class="metaCard">
+              <div class="metaCard__label">Mode</div>
+              <div class="metaCard__value">Early-stage MVP</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero__right">
+          <div class="panel panel--scan">
+            <div class="panel__head">
+              <div class="panel__title">Match Console</div>
+              <div class="panel__badges">
+                <span class="badge badge--blue">Electric</span>
+                <span class="badge badge--purple">Glow</span>
+              </div>
+            </div>
+
+            <div class="panel__body">
+              <div class="statRow">
+                <div class="statRow__left">
+                  <div class="statRow__name">Team Balance</div>
+                  <div class="statRow__sub">Role coverage</div>
+                </div>
+                <div class="bar" data-bar="78">
+                  <div class="bar__fill"></div>
+                </div>
+              </div>
+
+              <div class="statRow">
+                <div class="statRow__left">
+                  <div class="statRow__name">Schedule Sync</div>
+                  <div class="statRow__sub">Availability overlap</div>
+                </div>
+                <div class="bar" data-bar="64">
+                  <div class="bar__fill"></div>
+                </div>
+              </div>
+
+              <div class="statRow">
+                <div class="statRow__left">
+                  <div class="statRow__name">Skill Fit</div>
+                  <div class="statRow__sub">Domain alignment</div>
+                </div>
+                <div class="bar" data-bar="71">
+                  <div class="bar__fill"></div>
+                </div>
+              </div>
+
+              <div class="divider"></div>
+
+              <div class="miniCards">
+                <div class="miniCard">
+                  <div class="miniCard__title">Auth</div>
+                  <div class="miniCard__text">Sign in with Google (optional)</div>
+                </div>
+                <div class="miniCard">
+                  <div class="miniCard__title">DB</div>
+                  <div class="miniCard__text">Firestore-ready structure</div>
+                </div>
+                <div class="miniCard">
+                  <div class="miniCard__title">AI</div>
+                  <div class="miniCard__text">Gemini matching (future scope)</div>
+                </div>
+              </div>
+
+              <p class="muted small">
+                Note: This MVP demo uses localStorage for profiles unless Firebase is configured.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="why">
+        <div class="section__head">
+          <h2 class="section__title">Why SkillSync Exists</h2>
+          <p class="section__sub">Random teams look easy — until execution starts.</p>
+        </div>
+
+        <div class="cards3">
+          <article class="card card--lift">
+            <div class="card__icon glow-blue">⚔️</div>
+            <h3 class="card__title">Random teammates fail</h3>
+            <p class="card__text">Unclear roles and mismatched expectations break momentum early.</p>
+          </article>
+
+          <article class="card card--lift">
+            <div class="card__icon glow-purple">🧩</div>
+            <h3 class="card__title">Skill mismatch</h3>
+            <p class="card__text">Teams stack one skill and miss key roles like UI, backend, or pitching.</p>
+          </article>
+
+          <article class="card card--lift">
+            <div class="card__icon glow-green">⏱️</div>
+            <h3 class="card__title">Poor coordination</h3>
+            <p class="card__text">Availability clashes create delays, rework, and incomplete submissions.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section__head">
+          <h2 class="section__title">How It Works</h2>
+          <p class="section__sub">Designed like game levels — simple, structured, and repeatable.</p>
+        </div>
+
+        <div class="levels">
+          <div class="level">
+            <div class="level__badge">Level 1</div>
+            <div class="level__content">
+              <h3>Create Player Profile</h3>
+              <p>Basic identity, branch, year, and a short bio.</p>
+            </div>
+            <div class="level__xp"><span>XP</span><b>+10</b></div>
+          </div>
+
+          <div class="level">
+            <div class="level__badge">Level 2</div>
+            <div class="level__content">
+              <h3>Add Skills & Interests</h3>
+              <p>Glowing tags help visualize your strengths and domains.</p>
+            </div>
+            <div class="level__xp"><span>XP</span><b>+20</b></div>
+          </div>
+
+          <div class="level">
+            <div class="level__badge">Level 3</div>
+            <div class="level__content">
+              <h3>Match with Players</h3>
+              <p>Rule-based scoring now, Gemini-powered matching later.</p>
+            </div>
+            <div class="level__xp"><span>XP</span><b>+25</b></div>
+          </div>
+
+          <div class="level">
+            <div class="level__badge">Level 4</div>
+            <div class="level__content">
+              <h3>Form Teams</h3>
+              <p>Create or join team lobbies with required skills.</p>
+            </div>
+            <div class="level__xp"><span>XP</span><b>+30</b></div>
+          </div>
+
+          <div class="level">
+            <div class="level__badge">Level 5</div>
+            <div class="level__content">
+              <h3>Build & Ship Projects</h3>
+              <p>Better alignment → faster execution → stronger outcomes.</p>
+            </div>
+            <div class="level__xp"><span>XP</span><b>+50</b></div>
+          </div>
+        </div>
+
+        <div class="ctaStrip">
+          <div>
+            <h3 class="ctaStrip__title">Ready to create your Player Profile?</h3>
+            <p class="ctaStrip__sub">Start with the MVP Create Character screen.</p>
+          </div>
+          <a class="btn btn--primary" href="#/signin">Create Profile</a>
+        </div>
+      </section>
+    </section>
+
+    <!-- PLAYERS PAGE -->
+    <section class="page" id="page-players" data-page="players" hidden>
+      <div class="pageHead">
+        <div>
+          <h2 class="pageHead__title">Players</h2>
+          <p class="pageHead__sub">Active player cards. No avatars — only initials & skill tags.</p>
+        </div>
+
+        <div class="pageTools">
+          <div class="search">
+            <input id="playerSearch" type="search" placeholder="Search by name / skill / interest..." autocomplete="off" />
+          </div>
+          <button class="btn btn--ghost" type="button" id="btnResetDemo">Reset demo</button>
+        </div>
+      </div>
+
+      <div class="gridCards" id="playersGrid" aria-live="polite"></div>
+
+      <div class="hint">
+        <div class="hint__title">Tip</div>
+        <div class="hint__text">
+          Create a profile in <b>Sign In</b> → it will instantly appear here as an active player.
+        </div>
+      </div>
+    </section>
+
+    <!-- TEAMS PAGE -->
+    <section class="page" id="page-teams" data-page="teams" hidden>
+      <div class="pageHead">
+        <div>
+          <h2 class="pageHead__title">Teams Lobby</h2>
+          <p class="pageHead__sub">Join a lobby or request entry. Early-stage MVP demo.</p>
+        </div>
+
+        <div class="pillRow">
+          <span class="pill">Open to Join</span>
+          <span class="pill pill--purple">Looking for Teammates</span>
+          <span class="pill pill--green">Skill Tags</span>
+        </div>
+      </div>
+
+      <div class="gridCards" id="teamsGrid"></div>
+    </section>
+
+    <!-- SIGN IN / CREATE PROFILE PAGE -->
+    <section class="page" id="page-signin" data-page="signin" hidden>
+      <div class="pageHead">
+        <div>
+          <h2 class="pageHead__title">Create Your Character</h2>
+          <p class="pageHead__sub">Sign in with Google (optional) + create your Player Profile.</p>
+        </div>
+
+        <div class="techBadges">
+          <span class="badge badge--blue">Google Authentication</span>
+          <span class="badge badge--green">Firebase (Firestore + Auth)</span>
+          <span class="badge badge--purple">Gemini matching (future scope)</span>
+        </div>
+      </div>
+
+      <div class="split">
+        <section class="panel">
+          <div class="panel__head">
+            <div class="panel__title">Sign In</div>
+            <div class="panel__badges">
+              <span class="badge badge--blue">Optional</span>
+            </div>
+          </div>
+
+          <div class="panel__body">
+            <p class="muted">
+              To enable real Google Sign-In, add your Firebase config in <code>app.js</code>.
+              Otherwise this button shows a demo login.
+            </p>
+
+            <button class="btn btn--secondary w100" id="btnGoogleSignIn" type="button">
+              Sign in with Google
+            </button>
+
+            <div class="divider"></div>
+
+            <div class="notice">
+              <div class="notice__icon">ℹ️</div>
+              <div class="notice__text">
+                <b>MVP note:</b> Profiles are stored in <b>localStorage</b> by default.
+                If Firebase is configured, you can extend it to store in Firestore.
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel panel--scan">
+          <div class="panel__head">
+            <div class="panel__title">Profile Builder</div>
+            <div class="panel__badges">
+              <span class="badge badge--green">Create</span>
+              <span class="badge badge--purple">Player</span>
+            </div>
+          </div>
+
+          <div class="panel__body">
+            <form id="profileForm" class="form">
+              <div class="formRow">
+                <label>
+                  <span>Full Name</span>
+                  <input name="fullName" type="text" placeholder="e.g., Priyansh Tiwari" required />
+                </label>
+                <label>
+                  <span>Branch</span>
+                  <input name="branch" type="text" placeholder="e.g., CSE" required />
+                </label>
+              </div>
+
+              <div class="formRow">
+                <label>
+                  <span>College</span>
+                  <input name="college" type="text" value="BIT Mesra, Jaipur Campus" required />
+                </label>
+                <label>
+                  <span>Year</span>
+                  <select name="year" required>
+                    <option selected>1st Year</option>
+                    <option>2nd Year</option>
+                    <option>3rd Year</option>
+                    <option>4th Year</option>
+                  </select>
+                </label>
+              </div>
+
+              <label>
+                <span>Skills (comma separated)</span>
+                <input name="skills" type="text" placeholder="React, Firebase, UI/UX, DSA" required />
+              </label>
+
+              <label>
+                <span>Interests (comma separated)</span>
+                <input name="interests" type="text" placeholder="Hackathons, AI, Startups, Open Source" required />
+              </label>
+
+              <label>
+                <span>Weekly availability</span>
+                <select name="availability" required>
+                  <option selected>6–8 hrs/week</option>
+                  <option>3–5 hrs/week</option>
+                  <option>8–12 hrs/week</option>
+                  <option>12+ hrs/week</option>
+                </select>
+              </label>
+
+              <label>
+                <span>Short bio</span>
+                <textarea name="bio" rows="3" placeholder="What do you like building? What role do you prefer?" required></textarea>
+              </label>
+
+              <button class="btn btn--primary w100" type="submit">
+                Create Player Profile
+              </button>
+
+              <p class="muted small">
+                After creating, your profile appears in <b>Players</b>.
+              </p>
+            </form>
+          </div>
+        </section>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer container">
+    <div class="footer__left">
+      <div class="logo logo--small">
+        <span class="logo__mark">⚡</span><span class="logo__text">SkillSync</span>
+      </div>
+      <p class="muted small">
+        MVP demo UI • Game-inspired interface • No fake stats • No avatars
+      </p>
+    </div>
+
+    <div class="footer__right">
+      <span class="badge badge--blue">Google Auth</span>
+      <span class="badge badge--green">Firebase</span>
+      <span class="badge badge--purple">Gemini (future)</span>
+    </div>
+  </footer>
+
+  <!-- Optional Firebase SDK (uncomment if you want real Google Sign-In)
+  <script src="https://www.gstatic.com/firebasejs/10.12.4/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.4/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.4/firebase-firestore-compat.js"></script>
+  -->
+
+  <script src="app.js"></script>
+</body>
+</html>
