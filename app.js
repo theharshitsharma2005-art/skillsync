@@ -26,7 +26,7 @@ const DEMO_PLAYERS = [
     college: "BIT Mesra, Jaipur Campus",
     year: "1st Year",
     branch: "CSE",
-    bio: "Competitive, execution-first teammate — enjoys building MVPs and shipping features.",
+    bio: "Execution-first teammate who enjoys shipping MVPs and pitching ideas.",
     skills: ["DSA", "Frontend", "Firebase", "Pitching"],
     interests: ["Hackathons", "Startups", "AI"],
     availability: "8–12 hrs/week",
@@ -38,10 +38,85 @@ const DEMO_PLAYERS = [
     college: "BIT Mesra, Jaipur Campus",
     year: "1st Year",
     branch: "CSE",
-    bio: "Backend-leaning problem solver; likes reliable systems and team coordination.",
+    bio: "Backend-leaning problem solver focused on scalable systems and teamwork.",
     skills: ["Node.js", "APIs", "Database", "Git"],
     interests: ["System Design", "Web Dev", "Competitive Coding"],
     availability: "6–8 hrs/week",
+    source: "demo"
+  },
+
+  // 🔽 NEW DEMO PLAYERS 🔽
+
+  {
+    id: "demo-aditya",
+    name: "Aditya Agarwal",
+    college: "BIT Mesra, Jaipur Campus",
+    year: "1st Year",
+    branch: "CSE",
+    bio: "Logic-driven programmer with strong interest in algorithms and clean code.",
+    skills: ["C++", "DSA", "Problem Solving"],
+    interests: ["Competitive Coding", "Hackathons"],
+    availability: "6–8 hrs/week",
+    source: "demo"
+  },
+  {
+    id: "demo-rajat",
+    name: "Rajat Mittal",
+    college: "BIT Mesra, Jaipur Campus",
+    year: "1st Year",
+    branch: "CSE",
+    bio: "Curious learner exploring backend systems and API integrations.",
+    skills: ["Java", "APIs", "MySQL"],
+    interests: ["Backend Dev", "Startups"],
+    availability: "5–7 hrs/week",
+    source: "demo"
+  },
+  {
+    id: "demo-ayush",
+    name: "Ayush Pandia",
+    college: "BIT Mesra, Jaipur Campus",
+    year: "1st Year",
+    branch: "CSE",
+    bio: "Creative thinker interested in UI design and frontend development.",
+    skills: ["HTML", "CSS", "JavaScript"],
+    interests: ["Web Design", "UI/UX"],
+    availability: "6–8 hrs/week",
+    source: "demo"
+  },
+  {
+    id: "demo-antima",
+    name: "Antima Acharya",
+    college: "BIT Mesra, Jaipur Campus",
+    year: "1st Year",
+    branch: "CSE",
+    bio: "Detail-oriented team player with interest in databases and testing.",
+    skills: ["SQL", "Testing", "Documentation"],
+    interests: ["Quality Assurance", "Databases"],
+    availability: "4–6 hrs/week",
+    source: "demo"
+  },
+  {
+    id: "demo-khushi",
+    name: "Khushi Maurya",
+    college: "BIT Mesra, Jaipur Campus",
+    year: "1st Year",
+    branch: "CSE",
+    bio: "Product-minded learner passionate about design thinking and teamwork.",
+    skills: ["Figma", "UI Research", "Presentation"],
+    interests: ["Product Design", "Startups"],
+    availability: "6–8 hrs/week",
+    source: "demo"
+  },
+  {
+    id: "demo-jasmine",
+    name: "Jasmine Sharma",
+    college: "BIT Mesra, Jaipur Campus",
+    year: "1st Year",
+    branch: "CSE",
+    bio: "Tech enthusiast exploring AI concepts and Python programming.",
+    skills: ["Python", "Basics of ML", "Data Analysis"],
+    interests: ["Artificial Intelligence", "Learning"],
+    availability: "7–9 hrs/week",
     source: "demo"
   }
 ];
@@ -564,6 +639,7 @@ profileForm?.addEventListener("submit", (e) => {
     }
   });
 })();
+
 
 
 
