@@ -435,6 +435,11 @@ async function signOut() {
 }
 
 function applyAuthToHUD(auth) {
+     // 🔹 Update Sign-In message if Google auth is active
+  const signInNote = document.querySelector("#page-signin .muted");
+  if (signInNote && auth && auth.provider === "google") {
+    signInNote.textContent = "You're signed in with Google ✅";
+  }
   if (!auth) {
     hudInitials.textContent = "?";
     hudName.textContent = "Guest";
@@ -559,6 +564,7 @@ profileForm?.addEventListener("submit", (e) => {
     }
   });
 })();
+
 
 
 
