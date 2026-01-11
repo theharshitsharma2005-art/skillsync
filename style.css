@@ -667,4 +667,17 @@ textarea{resize: vertical}
   .nav{display:none}
   .bar{width: 48%}
 }
+/* Player Card Hover Effect */
+.playerCard {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.playerCard:hover {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow:
+    0 18px 40px rgba(37,99,235,0.22),
+    0 0 22px rgba(168,85,247,0.18);
+}
+
+
     
