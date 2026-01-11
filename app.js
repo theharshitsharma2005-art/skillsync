@@ -373,14 +373,16 @@ function toast(message) {
   2) Paste your firebaseConfig here
   3) Set USE_FIREBASE = true
 */
-const USE_FIREBASE = false;
+const USE_FIREBASE = true;
+
 
 const firebaseConfig = {
-  // apiKey: "YOUR_API_KEY",
-  // authDomain: "YOUR_PROJECT.firebaseapp.com",
-  // projectId: "YOUR_PROJECT_ID",
-  // appId: "YOUR_APP_ID",
+  apiKey: "AIzaSyB_ijx5Le2xHJighQD6SKuIymD_g_qcXhI",
+  authDomain: "skill-sync-56623.firebaseapp.com",
+  projectId: "skill-sync-56623",
+  appId: "1:412903850980:web:fe5b1de0ec41bb0785bdf1"
 };
+
 
 let fbAuth = null;
 
@@ -402,34 +404,44 @@ function initFirebaseIfAvailable() {
 }
 
 async function signInWithGoogle() {
-  // Firebase path
-  if (USE_FIREBASE && fbAuth) {
-    const provider = new firebase.auth.GoogleAuthProvider();
-    const result = await fbAuth.signInWithPopup(provider);
-    const user = result.user;
-    const auth = {
-      uid: user.uid,
-      name: user.displayName || "Google User",
-      email: user.email || "",
-      provider: "google"
+  if (!USE_FIREBASE || !fbAuth) {
+    // Demo fallback
+    const demoAuth = {
+      uid: "demo-" + Math.random().toString(16).slice(2),
+      name: "Demo Google User",
+      email: "demo.user@gmail.com",
+      provider: "google-demo"
     };
-    saveAuth(auth);
-    applyAuthToHUD(auth);
-    toast(`Signed in as ${auth.name}`);
+    saveAuth(demoAuth);
+    applyAuthToHUD(demoAuth);
+    toast("Demo Google sign-in complete.");
     return;
   }
 
-  // Demo sign-in fallback (still realistic, no fake stats)
-  const demoAuth = {
-    uid: "demo-" + Math.random().toString(16).slice(2),
-    name: "Demo Google User",
-    email: "demo.user@gmail.com",
-    provider: "google-demo"
-  };
-  saveAuth(demoAuth);
-  applyAuthToHUD(demoAuth);
-  toast("Demo Google sign-in complete (configure Firebase for real auth).");
+  try {
+    const provider = new firebase.auth.GoogleAuthProvider();
+    const result = await fbAuth.signInWithPopup(provider);
+    const user = result.user;
+
+    const auth = {
+      uid: user.uid,
+      name: user.displayName,
+      email: user.email,
+      provider: "google"
+    };
+
+    saveAuth(auth);
+    applyAuthToHUD(auth);
+    toast(`Welcome ${auth.name}`);
+  } catch (e) {
+    console.error(e);
+    toast("Google sign-in failed.");
+  }
 }
+
+
+
+
 
 async function signOut() {
   if (USE_FIREBASE && fbAuth) {
@@ -565,3 +577,4 @@ profileForm?.addEventListener("submit", (e) => {
     }
   });
 })();
+Enable Firebase Google Authentication
