@@ -366,15 +366,8 @@ function toast(message) {
   style.textContent = css;
   document.head.append(style);
 })();
-
-/** -------- Auth (Firebase optional) --------
-  To enable real Google Sign-In:
-  1) Uncomment Firebase scripts in index.html
-  2) Paste your firebaseConfig here
-  3) Set USE_FIREBASE = true
-*/
+/** -------- Auth (Firebase) -------- */
 const USE_FIREBASE = true;
-
 
 const firebaseConfig = {
   apiKey: "AIzaSyB_ijx5Le2xHJighQD6SKuIymD_g_qcXhI",
@@ -382,43 +375,31 @@ const firebaseConfig = {
   projectId: "skill-sync-56623",
   storageBucket: "skill-sync-56623.appspot.com",
   messagingSenderId: "412903850980",
-  appId: "1:412903850980:web:fe5b1de0ec41bb0785bdf1",
-  measurementId: "G-RGFQ8H2LF1"
+  appId: "1:412903850980:web:fe5b1de0ec41bb0785bdf1"
 };
-
-
 
 let fbAuth = null;
 
 function initFirebaseIfAvailable() {
-  if (!USE_FIREBASE) return false;
+  if (!USE_FIREBASE) return;
+
   if (typeof firebase === "undefined") {
-    toast("Firebase SDK not loaded. Using demo sign-in.");
-    return false;
+    console.error("❌ Firebase SDK not loaded");
+    return;
   }
-  try {
+
+  if (!firebase.apps.length) {
     firebase.initializeApp(firebaseConfig);
-    fbAuth = firebase.auth();
-    return true;
-  } catch (e) {
-    console.warn(e);
-    toast("Firebase init failed. Using demo sign-in.");
-    return false;
   }
+
+  fbAuth = firebase.auth();
+  console.log("✅ Firebase initialized");
 }
 
 async function signInWithGoogle() {
-  if (!USE_FIREBASE || !fbAuth) {
-    // Demo fallback
-    const demoAuth = {
-      uid: "demo-" + Math.random().toString(16).slice(2),
-      name: "Demo Google User",
-      email: "demo.user@gmail.com",
-      provider: "google-demo"
-    };
-    saveAuth(demoAuth);
-    applyAuthToHUD(demoAuth);
-    toast("Demo Google sign-in complete.");
+  if (!fbAuth) {
+    toast("Firebase not ready yet. Refresh once.");
+    console.error("fbAuth is null");
     return;
   }
 
@@ -437,14 +418,11 @@ async function signInWithGoogle() {
     saveAuth(auth);
     applyAuthToHUD(auth);
     toast(`Welcome ${auth.name}`);
-  } catch (e) {
-    console.error(e);
-    toast("Google sign-in failed.");
+  } catch (err) {
+    console.error(err);
+    toast("Google sign-in failed");
   }
 }
-
-
-
 
 
 async function signOut() {
@@ -581,6 +559,7 @@ profileForm?.addEventListener("submit", (e) => {
     }
   });
 })();
+
 
 
 
