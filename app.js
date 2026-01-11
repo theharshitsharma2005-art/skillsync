@@ -30,6 +30,8 @@ function toggleTheme() {
   const next = isDark ? "light" : "dark";
   localStorage.setItem(THEME_KEY, next);
   applyTheme(next);
+     addXP(5); // 🌙 Fun reward
+
 }
 
 
@@ -185,6 +187,7 @@ const profileForm = document.querySelector("#profileForm");
 const hudInitials = document.querySelector("#hudInitials");
 const hudName = document.querySelector("#hudName");
 const hudSub = document.querySelector("#hudSub");
+const hudXP = document.querySelector("#hudXP");
 const btnGoogleSignIn = document.querySelector("#btnGoogleSignIn");
 const btnSignOut = document.querySelector("#btnSignOut");
 
@@ -269,6 +272,11 @@ function addXP(amount, reason = "") {
 
   toast(`+${amount} XP ${reason ? "• " + reason : ""}`);
   updateXPDisplay();
+}
+function updateXPDisplay() {
+  if (!hudXP) return;
+  const xp = getXP();
+  hudXP.textContent = `${xp} XP ⚡`;
 }
 
 /** -------- UI helpers -------- */
@@ -543,6 +551,8 @@ async function signInWithGoogle() {
     saveAuth(auth);
     applyAuthToHUD(auth);
     toast(`Welcome ${auth.name}`);
+     addXP(10); // 🔐 Auth XP
+
   } catch (err) {
     console.error(err);
     toast("Google sign-in failed");
@@ -651,6 +661,8 @@ profileForm?.addEventListener("submit", (e) => {
   renderPlayers(updated);
 
   toast(`Profile created: ${player.name}`);
+   addXP(20); // 🎮 Profile XP
+
 
   // Go to players page
   window.location.hash = "#/players";
@@ -663,6 +675,9 @@ profileForm?.addEventListener("submit", (e) => {
   // 🌙 Apply saved theme on load
   const savedTheme = localStorage.getItem(THEME_KEY) || "light";
   applyTheme(savedTheme);
+
+  updateXPDisplay(); // 🎮 Load XP into HUD
+
 
   // 🔐 Init Firebase
   initFirebaseIfAvailable();
@@ -698,6 +713,7 @@ profileForm?.addEventListener("submit", (e) => {
   });
 
 })();
+
 
 
 
