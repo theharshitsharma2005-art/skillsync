@@ -30,19 +30,22 @@ SkillSync focuses on **forming the right teams before collaboration begins**.
 
 ---
 
-##🛠️ Tech Stack
+## 🛠️ Tech Stack
 
-Frontend: HTML, CSS, JavaScript (Vanilla)
+- **Frontend:** [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML), 
+  [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS), 
+  [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 
-Authentication: Google Sign-In (Firebase Authentication)
+- **Authentication:** [Firebase Authentication](https://firebase.google.com/products/auth)
 
-Backend Services: Firebase (Auth ready, Firestore structure prepared)
+- **Backend (Planned):** [Firebase Firestore](https://firebase.google.com/products/firestore)
 
-State Management: Browser localStorage
+- **AI Matching (Planned):** [Google Gemini API](https://ai.google.dev)
 
-UI/UX Design: Custom CSS (Game-inspired dashboard UI)
+- **Hosting:** [GitHub Pages](https://pages.github.com)
 
-Hosting: GitHub Pages
+- **Design:** Custom CSS (Game-inspired UI)
+
 
 ##🛣️ Roadmap
 
