@@ -6,8 +6,6 @@
 */
 
 
-const STORAGE_KEY = "skillsync_players_v1";
-const AUTH_KEY = "skillsync_auth_v1";
 
 const STORAGE_KEY = "skillsync_players_v1";
 const AUTH_KEY = "skillsync_auth_v1";
@@ -713,6 +711,7 @@ profileForm?.addEventListener("submit", (e) => {
   });
 
 })();
+
 
 
 
