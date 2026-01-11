@@ -312,9 +312,14 @@
               Otherwise this button shows a demo login.
             </p>
 
-            <button class="btn btn--secondary w100" id="btnGoogleSignIn" type="button">
-              Sign in with Google
-            </button>
+            <button
+            class="btn btn--secondary w100"
+            id="btnGoogleSignIn"
+            type="button"
+               onclick="googleSignIn()"
+               >
+            Sign in with Google
+           </button>
 
             <div class="divider"></div>
 
@@ -430,5 +435,43 @@
   -->
 
   <script src="app.js"></script>
+
+  <!-- Firebase SDKs (COMPAT version for plain HTML) -->
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+
+<script>
+  // Your Firebase configuration (SAFE to expose)
+  const firebaseConfig = {
+    apiKey: "AIzaSyB_ijx5Le2xHJighQD6SKuIymD_g_qcXhI",
+    authDomain: "skill-sync-56623.firebaseapp.com",
+    projectId: "skill-sync-56623",
+    storageBucket: "skill-sync-56623.firebasestorage.app",
+    messagingSenderId: "412903850980",
+    appId: "1:412903850980:web:fe5b1de0ec41bb0785bdf1"
+  };
+
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+
+  // Google Auth Provider
+  const auth = firebase.auth();
+  const provider = new firebase.auth.GoogleAuthProvider();
+
+  function googleSignIn() {
+    auth.signInWithPopup(provider)
+      .then((result) => {
+        const user = result.user;
+        alert("Welcome " + user.displayName);
+        console.log(user);
+      })
+      .catch((error) => {
+        console.error(error);
+        alert(error.message);
+      });
+  }
+</script>
+
 </body>
 </html>
+Enable Firebase Google Authentication
