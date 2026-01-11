@@ -9,6 +9,11 @@
 const STORAGE_KEY = "skillsync_players_v1";
 const AUTH_KEY = "skillsync_auth_v1";
 
+const STORAGE_KEY = "skillsync_players_v1";
+const AUTH_KEY = "skillsync_auth_v1";
+const XP_KEY = "skillsync_xp_v1"; 
+
+
 /** -------- Theme (Dark / Light) -------- */
 const THEME_KEY = "skillsync_theme";
 
@@ -246,6 +251,24 @@ function loadAuth() {
 function saveAuth(auth) {
   if (!auth) localStorage.removeItem(AUTH_KEY);
   else localStorage.setItem(AUTH_KEY, JSON.stringify(auth));
+}
+
+/** -------- XP System (Game-inspired) -------- */
+function getXP() {
+  return Number(localStorage.getItem(XP_KEY) || 0);
+}
+
+function setXP(value) {
+  localStorage.setItem(XP_KEY, String(Math.max(0, value)));
+}
+
+function addXP(amount, reason = "") {
+  const current = getXP();
+  const next = current + amount;
+  setXP(next);
+
+  toast(`+${amount} XP ${reason ? "• " + reason : ""}`);
+  updateXPDisplay();
 }
 
 /** -------- UI helpers -------- */
@@ -675,6 +698,7 @@ profileForm?.addEventListener("submit", (e) => {
   });
 
 })();
+
 
 
 
