@@ -581,7 +581,7 @@ profileForm?.addEventListener("submit", (e) => {
     }
   });
 })();
-Enable Firebase Google Authentication
-Enable Firebase Google Sign-In
+
+
 
 
