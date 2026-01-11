@@ -268,9 +268,16 @@ function addXP(amount, reason = "") {
   const next = current + amount;
   setXP(next);
 
-  toast(`+${amount} XP ${reason ? "• " + reason : ""}`);
   updateXPDisplay();
+  toast(`+${amount} XP ${reason ? "• " + reason : ""}`);
+
+  // ✨ XP Glow animation
+  if (hudXP) {
+    hudXP.classList.add("xp-glow");
+    setTimeout(() => hudXP.classList.remove("xp-glow"), 600);
+  }
 }
+
 function updateXPDisplay() {
   if (!hudXP) return;
   const xp = getXP();
@@ -711,6 +718,7 @@ profileForm?.addEventListener("submit", (e) => {
   });
 
 })();
+
 
 
 
