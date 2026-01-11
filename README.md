@@ -30,24 +30,36 @@ SkillSync focuses on **forming the right teams before collaboration begins**.
 
 ---
 
-## 🛠️ Tech Stack
+##🛠️ Tech Stack
 
-- **Frontend:** HTML, CSS, JavaScript  
-- **Hosting:** GitHub Pages  
-- **Design:** Custom CSS (Game-inspired UI)  
-- **Future Scope:**  
-  - Google Authentication  
-  - Firebase (Firestore + Auth)  
-  - Gemini AI-based matching  
+Frontend: HTML, CSS, JavaScript (Vanilla)
 
----
+Authentication: Google Sign-In (Firebase Authentication)
 
-## 🛣️ Roadmap
+Backend Services: Firebase (Auth ready, Firestore structure prepared)
 
-- MVP: Static frontend with demo data (current)
-- Phase 2: Google Authentication
-- Phase 3: Firebase backend for users & teams
-- Phase 4: AI-based skill matching using Gemini
+State Management: Browser localStorage
+
+UI/UX Design: Custom CSS (Game-inspired dashboard UI)
+
+Hosting: GitHub Pages
+
+##🛣️ Roadmap
+
+Phase 1 — MVP ✅
+Game-inspired UI, player profiles, demo teams, localStorage, animations, dark/light mode.
+
+Phase 2 — Auth ✅
+Google Sign-In (Firebase), session handling, personalized HUD, demo fallback.
+
+Phase 3 — Backend 🔄
+Firestore for players & teams, secure user data, real-time updates.
+
+Phase 4 — AI Matching 🔮
+Gemini-powered teammate recommendations, skill-gap & availability scoring.
+
+Phase 5 — Scale 🚀
+Team chat, invite/join flow, project tracking, public team discovery.
 
 
 ## 📦 Installation & Setup
