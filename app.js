@@ -9,6 +9,25 @@
 const STORAGE_KEY = "skillsync_players_v1";
 const AUTH_KEY = "skillsync_auth_v1";
 
+/** -------- Theme (Dark / Light) -------- */
+const THEME_KEY = "skillsync_theme";
+
+function applyTheme(theme) {
+  document.body.classList.toggle("dark", theme === "dark");
+  if (btnThemeToggle) {
+    btnThemeToggle.textContent = theme === "dark" ? "☀️" : "🌙";
+  }
+}
+
+
+function toggleTheme() {
+  const isDark = document.body.classList.contains("dark");
+  const next = isDark ? "light" : "dark";
+  localStorage.setItem(THEME_KEY, next);
+  applyTheme(next);
+}
+
+
 /** -------- Demo data (ONLY 3 as requested) -------- */
 const DEMO_PLAYERS = [
   {
@@ -163,6 +182,11 @@ const hudName = document.querySelector("#hudName");
 const hudSub = document.querySelector("#hudSub");
 const btnGoogleSignIn = document.querySelector("#btnGoogleSignIn");
 const btnSignOut = document.querySelector("#btnSignOut");
+
+const btnThemeToggle = document.querySelector("#btnThemeToggle");
+
+btnThemeToggle?.addEventListener("click", toggleTheme);
+
 
 /** -------- Simple router -------- */
 function getRoute() {
@@ -612,25 +636,33 @@ profileForm?.addEventListener("submit", (e) => {
 
 /** -------- Boot -------- */
 (function init(){
+
+  // 🌙 Apply saved theme on load
+  const savedTheme = localStorage.getItem(THEME_KEY) || "light";
+  applyTheme(savedTheme);
+
+  // 🔐 Init Firebase
   initFirebaseIfAvailable();
 
-  // Apply auth from storage on load
+  // 👤 Restore auth
   const auth = loadAuth();
   applyAuthToHUD(auth);
 
-  // Render initial pages
+  // 🎮 Render initial data
   const players = loadPlayers();
   renderPlayers(players);
   renderTeams(DEMO_TEAMS);
 
+  // 🧭 Router
   const route = getRoute();
   showPage(route);
   if (route === "home") animateBars();
 
-  // Smooth anchor scroll for "Start Your Journey" (hero -> #why)
+  // 🔗 Smooth anchor scroll
   document.addEventListener("click", (e) => {
     const a = e.target.closest("a[href^='#']");
     if (!a) return;
+
     const href = a.getAttribute("href");
     if (href && href.startsWith("#") && !href.startsWith("#/")) {
       const id = href.slice(1);
@@ -641,7 +673,9 @@ profileForm?.addEventListener("submit", (e) => {
       }
     }
   });
+
 })();
+
 
 
 
