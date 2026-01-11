@@ -1,7 +1,10 @@
+// Version: demo-seed-v2
+
 /* SkillSync MVP (Game UI)
    - Default storage: localStorage
    - Optional Google Sign-in: Firebase Auth (if configured)
 */
+
 
 const STORAGE_KEY = "skillsync_players_v1";
 const AUTH_KEY = "skillsync_auth_v1";
@@ -639,6 +642,7 @@ profileForm?.addEventListener("submit", (e) => {
     }
   });
 })();
+
 
 
 
