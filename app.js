@@ -380,8 +380,12 @@ const firebaseConfig = {
   apiKey: "AIzaSyB_ijx5Le2xHJighQD6SKuIymD_g_qcXhI",
   authDomain: "skill-sync-56623.firebaseapp.com",
   projectId: "skill-sync-56623",
-  appId: "1:412903850980:web:fe5b1de0ec41bb0785bdf1"
+  storageBucket: "skill-sync-56623.appspot.com",
+  messagingSenderId: "412903850980",
+  appId: "1:412903850980:web:fe5b1de0ec41bb0785bdf1",
+  measurementId: "G-RGFQ8H2LF1"
 };
+
 
 
 let fbAuth = null;
@@ -578,3 +582,6 @@ profileForm?.addEventListener("submit", (e) => {
   });
 })();
 Enable Firebase Google Authentication
+Enable Firebase Google Sign-In
+
+
