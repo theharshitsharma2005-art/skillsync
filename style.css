@@ -18,6 +18,60 @@
   --radius: 18px;
   --radius2: 14px;
 }
+/* =======================
+   DARK MODE
+======================= */
+
+body.dark {
+  background: #0b1020;
+  color: #e5e7eb;
+}
+
+/* Panels / Cards */
+body.dark .panel,
+body.dark .playerCard,
+body.dark .teamCard {
+  background: rgba(17, 24, 39, 0.9);
+  border: 1px solid rgba(255,255,255,0.06);
+  box-shadow: 0 12px 30px rgba(0,0,0,.45);
+}
+
+/* Text */
+body.dark .muted {
+  color: #9ca3af;
+}
+
+body.dark h1,
+body.dark h2,
+body.dark h3 {
+  color: #f9fafb;
+}
+
+/* Inputs */
+body.dark input,
+body.dark textarea,
+body.dark select {
+  background: #111827;
+  color: #e5e7eb;
+  border-color: rgba(255,255,255,0.08);
+}
+
+/* Buttons */
+body.dark .btn--primary {
+  background: linear-gradient(135deg, #2563eb, #7c3aed);
+}
+
+body.dark .btn--secondary {
+  background: rgba(255,255,255,0.06);
+}
+
+/* Player card hover glow (stronger in dark) */
+body.dark .playerCard:hover {
+  box-shadow:
+    0 22px 55px rgba(59,130,246,0.35),
+    0 0 40px rgba(168,85,247,0.25);
+}
+
 
 *{box-sizing:border-box}
 html,body{height:100%}
@@ -668,16 +722,22 @@ textarea{resize: vertical}
   .bar{width: 48%}
 }
 /* Player Card Hover Effect */
-.playerCard {
+ .playerCard {
+  position: relative;
+  overflow: visible; /* 🔥 VERY IMPORTANT */
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
+
 
 .playerCard:hover {
   transform: translateY(-6px) scale(1.01);
   box-shadow:
-    0 18px 40px rgba(37,99,235,0.22),
-    0 0 22px rgba(168,85,247,0.18);
+    0 0 0 1px rgba(37,99,235,0.25),
+    0 20px 50px rgba(37,99,235,0.35),
+    0 0 35px rgba(168,85,247,0.45);
 }
 
 
+
     
+
